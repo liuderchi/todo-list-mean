@@ -1,0 +1,107 @@
+<!-- index.html
+Date: 2016-03-02/ revised for node,express 2016-07-25
+-->
+
+<!DOCTYPE html>
+<!-- ng-app for app.js-->
+<html lang="en" ng-app="app">
+  <head>
+    <title>ToDo App Client</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.2.5.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <!--{% load staticfiles %}   Dj -->
+    <script type="text/javascript" src="res/js/app.js"></script>
+    <script type="text/javascript" src="res/js/todo-controller.js"></script>
+    <script type="text/javascript" src="res/js/modal-controller.js"></script>
+    <meta charset="UTF-8">
+  </head>
+
+  <!--{% verbatim %}   Dj escape rendering directive-->
+  <body>
+  <div id="main-row" class="row" align="center">
+    <div class="col-md-1"></div>
+    <div class="col-md-10" ng-controller="todoController" ng-init="init()" >
+
+      <!-- NOTE Modal Template-->
+      <script type="text/ng-template" id="my_modal_id">
+      <div class="modal-header">
+        <h3 class="modal-title">Are you sure?</h3>
+      </div>
+      <div class="modal-body">
+        <p>do u wanna delete "{{ DeleteTaskName }}" ?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+      </div>
+      </script> <!--End of Modal Template-->
+
+      <h1>Make a To-Do!</h1>
+
+      <input type="text" ng-model="newTaskName" placeholder="enter task here!">
+      <button type="button" class="btn btn-sm btn-success" ng-click="onClickAddTask(newTaskName)">
+        <span class="glyphicon glyphicon-plus"></span> Add Task
+      </button>
+
+      <!--NOTE Todo-list Stats -->
+      <div class="row" style="padding: 10px 0 0 0;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <uib-progressbar class="active" max="30" value="tasksUndone.length + tasksDone.length">
+            <i>{{ tasksUndone.length + tasksDone.length }} / 30</i>
+          </uib-progressbar>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+
+        <!--NOTE flash message-->
+      <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</uib-alert>
+
+      <div id="task-groups" class="row">
+        <div class="col-md-6">
+
+          <h2>Undone tasks</h2>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="t in tasksUndone">
+              <input id="{{t.task_id}}" type="checkbox" ng-model="t.status" ng-change="onClickUpdateTask(t.task_id, t)" checked="{[t.status]}">
+              <input type="text" value="{{t.task}}" ng-model="t.task">
+              <!--NOTE: ng.model should same as value: t.task-->
+
+              <button type="button" class="btn btn-sm btn-primary" ng-click="onClickUpdateTask(t.task_id, t)">
+                <span class="glyphicon glyphicon-pencil"></span> Rename
+              </button>
+              <button type="button" class="btn btn-sm btn-danger" ng-click="onClickDeleteTask(t.task_id, t.task)">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+
+          <h2>Done tasks</h2>
+          <ul class="list-group">
+            <li class="list-group-item" ng-repeat="t in tasksDone">
+              <input id="{{t.task_id}}" type="checkbox" ng-model="t.status" ng-change="onClickUpdateTask(t.task_id, t)" checked="{{t.status}}">
+              <input type="text" value="{{t.task}}" ng-model="t.task">
+              <button type="button" class="btn btn-sm btn-primary" ng-click="onClickUpdateTask(t.task_id, t)">
+                <span class="glyphicon glyphicon-pencil"></span> Rename
+              </button>
+              <button type="button" class="btn btn-sm btn-danger" ng-click="onClickDeleteTask(t.task_id, t.task)">
+                <span class="glyphicon glyphicon-remove"></span> Delete
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div><!--End of task-groups-->
+
+    </div> <!-- End of controller-->
+
+    <div class="col-md-1"></div>
+  </div> <!-- End of main-row-->
+  </body>
+  <!--{% endverbatim %}   Dj End of escape rendering directive-->
+
+</html>
