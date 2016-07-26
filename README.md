@@ -14,8 +14,8 @@ Communicate between browser and server is trying to be _RESTful_.
 ## RUN
 
 ```bash
-$ mongod
-$ cd todo_app_mean
+$ mongod  # if you don't have mongodb installed, use $ apt-get install mongodb
+$ cd todo_list_mean
 $ npm install
 $ node main.js
 ```
