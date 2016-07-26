@@ -42,16 +42,14 @@ app.route('/')
           if (todos.length >= 30){
             return res.status(403).send({result:'failed', message:'reached limit of 30 tasks.'});
           }
+          new Todo({
+            task_id: _task.task_id,
+            task: _task.task,
+            status: false
+          }).save((err, todo, count) => {
+              res.status(201).send({});
+          });
         });
-
-    new Todo({
-      task_id: _task.task_id,
-      task: _task.task,
-      status: false
-    }).save((err, todo, count) => {
-        res.status(201).send({});
-    });
-
   });
 
 
@@ -77,7 +75,6 @@ app.route(/^\/(\w+)/)
           }
           if (!taskExist) {  res.status(404).send('NOT FOUND');  }
         });
-
   })
   .delete((req, res) => {
     // curl -X DELETE -H "Content-Type: application/json" -w "\n"  http://localhost:3000/t_id
@@ -96,7 +93,6 @@ app.route(/^\/(\w+)/)
           }
           if (!taskExist) {  res.status(404).send('NOT FOUND');  }
         });
-
   });
 
 
