@@ -51,6 +51,13 @@ app.route('/')
     _task = JSON.parse(JSON.stringify(req.body));
     _task.task_id = util.makeid();
 
+    Todo.find({})
+        .exec((err, todos) => {
+          if (todos.length >= 30){
+            return res.status(403).send({result:'failed', message:'reached limit of 30 tasks.'});
+          }
+        });
+
     new Todo({
       task_id: _task.task_id,
       task: _task.task,
@@ -58,6 +65,7 @@ app.route('/')
     }).save((err, todo, count) => {
         res.status(201).send({});
     });
+
   });
 
 
@@ -69,7 +77,7 @@ app.route(/^\/(\w+)/)
     var target_task_id = req.params[0]
     var taskExist = false;
     Todo.find({})
-        .exec(( err, todos ) =>{
+        .exec(( err, todos ) => {
           for (task of todos) {
             if (task.task_id === target_task_id){   // TODO use mongo filter
               taskExist = true;
@@ -83,13 +91,14 @@ app.route(/^\/(\w+)/)
           }
           if (!taskExist) {  res.status(404).send('NOT FOUND');  }
         });
+
   })
   .delete((req, res) => {
     // curl -X DELETE -H "Content-Type: application/json" -w "\n"  http://localhost:3000/t_id
 
     var target_task_id = req.params[0]
     Todo.find({})
-        .exec(( err, todos ) =>{
+        .exec(( err, todos ) => {
           for (task of todos) {
             if (task.task_id === target_task_id){   // TODO use mongo filter
               taskExist = true;
@@ -101,6 +110,7 @@ app.route(/^\/(\w+)/)
           }
           if (!taskExist) {  res.status(404).send('NOT FOUND');  }
         });
+
   });
 
 
@@ -110,6 +120,7 @@ app.use( (req, res, next) => {  // default request handle (should put in bottom)
 
 
 // MAIN
-app.listen(3000, () => {
-  console.log('Example app listening on port 3000!');
+var port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log('Example app listening on port', port);
 });
