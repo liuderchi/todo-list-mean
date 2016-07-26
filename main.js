@@ -1,30 +1,16 @@
 'use babel'; // use babel transpiler
-require( './db-connect' ); // db connection
+require('./util/db-connect'); // db connection
 
 var express = require('express');
 var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var mongoose = require( 'mongoose' );
-var Todo = mongoose.model( 'Todo' );
+var mongoose = require('mongoose');
+var Todo = mongoose.model('Todo');
 
-var util = require( './util' );
+var util = require('./util/util');
 
-var fakeData = {
-  tasks: [
-    {
-      task:  "learn express",
-      status: false,
-      task_id: "qwerasdf"
-    },
-    {
-      task:  "learn angular",
-      status: true,
-      task_id: "fdsarewq"
-    }
-  ]
-};
 
 app.use(bodyParser.json()); // REQUEST PARSER
 app.use('/res', express.static('static'));  // NOTE access via /res/js/app.js
@@ -114,7 +100,7 @@ app.route(/^\/(\w+)/)
   });
 
 
-app.use( (req, res, next) => {  // default request handle (should put in bottom)
+app.use((req, res, next) => {  // default request handle (should put in bottom)
   return res.status(404).send('NOT FOUND');
 });
 

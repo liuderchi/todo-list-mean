@@ -5,7 +5,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var util = require( './util' );
+var util = require('./util/util');
 
 var fakeData = {
   tasks: [
