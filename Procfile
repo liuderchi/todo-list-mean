@@ -1,1 +1,1 @@
-web: node main_heroku.js
+web: node main.js
