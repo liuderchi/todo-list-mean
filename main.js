@@ -34,7 +34,7 @@ app.route('/')
   .post((req, res) => {
     // curl -X POST -H "Content-Type: application/json"  -d '{"task":"yes","status":true}' -w "\n"  http://localhost:3000/
 
-    _task = JSON.parse(JSON.stringify(req.body));
+    var _task = JSON.parse(JSON.stringify(req.body));
     _task.task_id = util.makeid();
 
     Todo.find({})
@@ -47,7 +47,7 @@ app.route('/')
             task: _task.task,
             status: false
           }).save((err, todo, count) => {
-              res.status(201).send({});
+            res.status(201).send({});
           });
         });
   });
@@ -58,11 +58,11 @@ app.route(/^\/(\w+)/)
   .put((req, res) => {
     // curl -X PUT -H "Content-Type: application/json"  -d '{"task":"NewTask","status":true}' -w "\n"  http://localhost:3000/t_id
 
-    var target_task_id = req.params[0]
+    var target_task_id = req.params[0];
     var taskExist = false;
     Todo.find({})
         .exec(( err, todos ) => {
-          for (task of todos) {
+          for (var task of todos) {
             if (task.task_id === target_task_id){   // TODO use mongo filter
               taskExist = true;
               res.status(200).send({result: "ok"});
@@ -82,9 +82,9 @@ app.route(/^\/(\w+)/)
     var target_task_id = req.params[0]
     Todo.find({})
         .exec(( err, todos ) => {
-          for (task of todos) {
+          for (var task of todos) {
             if (task.task_id === target_task_id){   // TODO use mongo filter
-              taskExist = true;
+              var taskExist = true;
               res.status(200).send({result: "ok"});
               task.remove((err) => {
                 if( err ) console.log('error db update');
