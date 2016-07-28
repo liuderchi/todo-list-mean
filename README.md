@@ -1,14 +1,10 @@
 # Simple ToDo List App Using MEAN Stack
 
-It's a very simple to-do list app using moder web technologies.
+* It's a very simple to-do list app using __MEAN__ Stack (`MongoDB`, `express`, `AngularJS`, `Nodejs`).
+* Currently hosted on https://demo-todo-mean.herokuapp.com/home
 
-- MongoDB v2.4.9
-- express ^4.14.0,
-- AngularJS v1.x
-- Nodejs v4.4.7
-
-Also it's feature including `CRUD` operation to a task;
-Communicate between browser and server is trying to be _RESTful_.
+* It supports `CRUD` operation to a todo task;
+* Communication between browser and server is trying to be RESTful.
 
 
 ## RUN
@@ -16,8 +12,10 @@ Communicate between browser and server is trying to be _RESTful_.
 ### RUN LOCALLY
 
 ```bash
-$ mongod  # if you don't have mongodb installed, use $ apt-get install mongodb
+$ mongod  
+    # if you don't have mongodb installed, use $ apt-get install mongodb
 $ cd todo_list_mean
+
 $ npm install
 $ node main.js
 ```
@@ -27,10 +25,9 @@ now you can use this app via http://localhost:3000/home
 
 ### DEPLOY to HEROKU
 
+#### Prerequisites for Heroku
 
-#### ENVIRONMENT for Heroku
-
-  - Heroku toolbelt 3.x
+  - Heroku toolbelt
   - An Heroku account
   - An _mLab MongoDB_ add-on set up. [(tutorial)](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku)
 
@@ -58,8 +55,6 @@ $ git remote set-url heroku https://YOUR_NEW_HEROKU_GIT_REPO_URL.git
 ```
 
 now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/home
-
-currently this website is deployed on https://demo-todo-mean.herokuapp.com/home
 
 
 ## CHANGELOG
