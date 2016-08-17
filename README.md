@@ -1,7 +1,7 @@
 # Simple ToDo List App Using MEAN Stack
 
 * It's a very simple to-do list app using __MEAN__ Stack (`MongoDB`, `express`, `AngularJS`, `Nodejs`).
-* Currently hosted on https://demo-todo-mean.herokuapp.com/home
+* Currently hosted on https://demo-todo-mean.herokuapp.com/
 
 * It supports `CRUD` operation to a todo task;
 * Communication between browser and server is trying to be RESTful.
@@ -34,7 +34,7 @@ now you can use this app via http://localhost:3000/home
 
 ```bash
 $ heroku create
-    # create heroku app, heroku create git remote for you named 'heroku'
+    # For the first time you deploy: create heroku app, heroku create git remote for you named 'heroku'
 
 $ git push heroku HEAD:master
     # push current commit to remote then deploy automatically
@@ -54,7 +54,7 @@ $ git remote set-url heroku https://YOUR_NEW_HEROKU_GIT_REPO_URL.git
     # don't forget to update remote after renaming
 ```
 
-now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/home
+now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/
 
 
 ## CHANGELOG
@@ -63,3 +63,4 @@ now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/home
 ## TODO
 
 - Add OAuth2
+- Integrate with Test framework

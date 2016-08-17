@@ -17,13 +17,13 @@ app.use('/res', express.static('static'));  // NOTE access via /res/js/app.js
 
 
 // ROUTING
-app.route(/^\/(home)/)
+app.route('/')
   .get((req, res) => {
     res.status(200).sendFile('index.html', { root: path.join('.', 'static') }); // root file
   });
 
 
-app.route('/')
+app.route('/todos/')
   .get((req, res) => {
     Todo.find({})
         .sort( '-updated_at' )
@@ -54,7 +54,7 @@ app.route('/')
 
 
 // app.route('/:task_id')   // console.log('delete a new task', req.params.task_id);
-app.route(/^\/(\w+)/)
+app.route(/^\/todos\/(\w+)/)
   .put((req, res) => {
     // curl -X PUT -H "Content-Type: application/json"  -d '{"task":"NewTask","status":true}' -w "\n"  http://localhost:3000/t_id
 

@@ -18,7 +18,7 @@ angular
 
     $scope.onClickAddTask = (taskName) => {
         // prepare request url and data
-        var url = '/';
+        var url = '/todos/';
         var data = {'task':taskName};
 
         $http.post(url, data).then(
@@ -53,7 +53,7 @@ angular
     }
 
     var _sendGetUpdateAngModel = (url) => {
-        url = url || '/';   // get current host and port
+        url = url || '/todos/';   // get current host and port
         $http.get(url).then(
             (resp) => {
                 _updateTaskAngModel(resp);
@@ -68,7 +68,7 @@ angular
         console.info('task', taskID, ' is gonna update to status ', task.status);
         console.info('task', taskID, ' is gonna update to name ', task.task);
 
-        var url = '/' + taskID;
+        var url = '/todos/' + taskID;
 
         // parse request data
         var data = {};
@@ -90,7 +90,7 @@ angular
 
     $scope.onClickDeleteTask = (taskID, taskName) => {
         console.info('task ', taskID, ' is gonna be deleted');
-        var url = '/' + taskID;
+        var url = '/todos/' + taskID;
 
         // confirm modal
         var modalInstance = $uibModal.open({
