@@ -1,5 +1,7 @@
 # Simple ToDo List App Using MEAN Stack
 
+![Linux build status](https://api.travis-ci.org/liuderchi/todo-list-mean.svg?branch=master)
+
 * It's a very simple to-do list app using __MEAN__ Stack (`MongoDB`, `express`, `AngularJS`, `Nodejs`).
 * Currently hosted on https://demo-todo-mean.herokuapp.com/
 
@@ -63,4 +65,5 @@ now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/
 ## TODO
 
 - Add OAuth2
-- Integrate with Test framework
+- Integrate with Test framework, add test script
+- Add CI to automate testing and deployment

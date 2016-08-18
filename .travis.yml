@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+- "4"
+
+branches:
+  only:
+  - master
+  - travis_ci_test
+
+install:
+- npm install
+
+notifications:
+  email:
+    recipients:
+    - liuderchi@gmail.com
+    on_success: always
+    on_failure: always
+
+script: npm test
