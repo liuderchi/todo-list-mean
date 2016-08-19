@@ -28,3 +28,4 @@ deploy:
   - "echo 'run some cmd on heroku machine'"
 after_deploy:
   - "echo 'run some test script on travis machine'"
+  - cat testserver.sh | sh

@@ -10,6 +10,7 @@ globals:
   fdescribe: true
   it: true
   fit: true
+  beforeEach: true
   expect: true
 extends: eslint:recommended
 parserOptions:

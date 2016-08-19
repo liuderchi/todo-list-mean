@@ -18,12 +18,3 @@ if [ -f ./node_modules/.bin/eslint ]; then
     rc=$?; if [ $rc -ne 0 ]; then exit $rc; fi
   fi
 fi
-
-# using jasmine to test
-if [ -f ./node_modules/.bin/jasmine ]; then
-  if [ -d ./spec ]; then
-    echo "Running Jasmine specs..."
-    ./node_modules/.bin/jasmine
-    rc=$?; if [ $rc -ne 0 ]; then exit $rc; fi
-  fi
-fi

@@ -66,4 +66,4 @@ now you can use this app via http://MY_HEROKU_APP_NAME.herokuapp.com/
 
 - Add OAuth2
 - Integrate with Test framework, add test script
-- Add CI to automate testing and deployment
+- Add CI to automate testing
