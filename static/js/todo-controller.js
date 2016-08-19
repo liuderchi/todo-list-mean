@@ -1,7 +1,7 @@
 angular
-    .module("todoController", ['modalController', 'ngAnimate', 'ui.bootstrap'])
-    .controller("todoController", ['$scope', '$http', '$uibModal', '$log',
-    ($scope, $http, $uibModal, $log) => {
+.module("todoController", ['modalController', 'ngAnimate', 'ui.bootstrap'])
+.controller("todoController", ['$scope', '$http', '$uibModal', '$log',
+($scope, $http, $uibModal, $log) => {
     // NOTE $uibModal dependencies
 
     $scope.tasksDone = [];
@@ -29,7 +29,8 @@ angular
                     $scope.newTaskName = '';                   // clear input
                     $scope.addAlert('created task: ' + taskName);
                 }
-            }, (resp) => {  // handle task limit condition
+            },
+            (resp) => {  // handle task limit condition
                 if (resp.status === 403){
                     alert('reach 30 tasks limit');
                 }
@@ -50,7 +51,7 @@ angular
                 $scope.tasksUndone.push(task);
             }
         }
-    }
+    };
 
     var _sendGetUpdateAngModel = (url) => {
         url = url || '/todos/';   // get current host and port
@@ -58,10 +59,11 @@ angular
             (resp) => {
                 _updateTaskAngModel(resp);
                 $log.log('successGET');
-            }, (resp) => {
+            },
+            () => {
                 $log.log('errorGET');
             });
-    }
+    };
 
     // change task status
     $scope.onClickUpdateTask = (taskID, task) => {
@@ -82,7 +84,8 @@ angular
                     _sendGetUpdateAngModel();
                     $scope.addAlert('update success');
                 }
-            }, (resp) => {
+            },
+            () => {
                 $log.log('errorPUT');
                 _sendGetUpdateAngModel();
             });
@@ -115,13 +118,14 @@ angular
                         _sendGetUpdateAngModel();
                         $scope.addAlert(resp.data.result + ' : ' + taskName );
                     }
-                }, (resp) => {
+                },
+                () => {
                     $log.log('errorDELETE');
                 });
         }, (modalResultReject) => {
             // NOTE reject function, modalResultReject passed from modal-controller
             $log.info('[Modal] ' + new Date() + ': ' + modalResultReject);
-            }
+        }
         );
 
     };

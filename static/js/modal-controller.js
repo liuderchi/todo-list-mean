@@ -1,6 +1,6 @@
 angular
-  .module("modalController", ['ngAnimate', 'ui.bootstrap'])
-  .controller('ModalInstanceCtrl', ($scope, $uibModalInstance, name) => {
+.module("modalController", ['ngAnimate', 'ui.bootstrap'])
+.controller('ModalInstanceCtrl', ($scope, $uibModalInstance, name) => {
     // NOTE $uibModalInstance dependencies
     // define display of modal content and return value
     $scope.DeleteTaskName = name;
