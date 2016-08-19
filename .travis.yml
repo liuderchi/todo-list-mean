@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-- "4"
+- '4'
 
 branches:
   only:
@@ -18,3 +18,13 @@ notifications:
     on_failure: change
 
 script: npm test
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: Vovnxf8BVuGZgTACErBbWQV8mZ1E5QzGIBMYeqXrnO8XmHuL1BB6VNB6sRR3Io4JdkaG7uVVuCv2JddeOOnCMYe1zDE+GzmJKM6CsCQYvprX7M/zGSNU5gSKMiagLPaMWhw9jQ399crDEDuqHLJNIMuotLXawb4qdcoJkM8/jGPVp5QTl9Ooc7V7/SH58GaGIga1Tx1JJeysrV/pHqD/sezFEyuM2gxbWwyNGjpzAnlxmvaoBOhzOaSHPJh2/6bI7L6M7jIOpz/4uNRU3YTzpIaLYFBv+rOxLEbdSQCVTyd5ZVaXr9wtrMQFHWI8Lf0v7wbx9Qa5LX0I62YuRRcVPM++zN7O7wSdVIwE70NP3tJza7kIeZIfz1E0PJNmOYFcnK0aFjL/30XlpqQyL90SjsBDDyhkfsz9T/BphzYqp75UzbtAbb4uqBVwKdyCPkgHTd3qfkt4qLl6A1QxHbZV1C3MoaPHfDDHmEXDgyrrKnsn3LmwJctDMmx+3J+SVVtA2dCNaFcNFwgZCVlY3eq7tYFlUhyMrPxU/mXbJwT4jNh83uQgdQuISGhobN9Yx6SaUspLK7wegPrco8ve1BDtg9ED/52bRnMvps7tn7Q586Jy1b6rBtNaMjALfM+Fnfkooe1Z4XKYtxLVlamtVevfCP3lGPIPBlil2EuDe5er56c=
+  app: demo-todo-mean
+  run:
+  - "echo 'run some cmd on heroku machine'"
+after_deploy:
+  - "echo 'run some test script on travis machine'"
