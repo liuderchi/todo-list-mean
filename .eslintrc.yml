@@ -1,0 +1,31 @@
+eslintConfig:
+  root: true
+_source: http://amobiz.github.io/2015/12/21/applying-eslint-using-atom-linter-eslint/
+env:
+  browser: true
+  node: true
+  commonjs: true
+  es6: true
+globals:
+  angular: true
+extends: eslint:recommended
+parserOptions:
+  sourceType: module
+rules:
+  no-console: 0
+  no-unused-vars:
+  - 1
+  - vars: all
+    args: after-used
+  indent:
+  - warn
+  - 4
+  semi:
+  - 1
+  - always
+  quotes:
+  - 0
+  - single
+  linebreak-style:
+  - 1
+  - unix

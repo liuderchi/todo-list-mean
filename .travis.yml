@@ -6,7 +6,6 @@ node_js:
 branches:
   only:
   - master
-  - travis_ci_test
 
 install:
 - npm install
@@ -15,7 +14,7 @@ notifications:
   email:
     recipients:
     - liuderchi@gmail.com
-    on_success: always
-    on_failure: always
+    on_success: never
+    on_failure: change
 
 script: npm test

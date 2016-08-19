@@ -4,10 +4,13 @@
   "description": "todo app using mean stack",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"INFO: no test specified\" && exit 0"
+    "test": "cat test.sh | sh"
   },
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.0.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
