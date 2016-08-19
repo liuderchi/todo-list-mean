@@ -1,0 +1,34 @@
+eslintConfig:
+  root: true
+env:
+  browser: true
+  node: true
+  commonjs: true
+  es6: true
+globals:
+  describe: true
+  fdescribe: true
+  it: true
+  fit: true
+  expect: true
+extends: eslint:recommended
+parserOptions:
+  sourceType: module
+rules:
+  no-console: 0
+  no-unused-vars:
+  - 1
+  - vars: all
+    args: after-used
+  indent:
+  - warn
+  - 2
+  semi:
+  - 1
+  - always
+  quotes:
+  - 0
+  - single
+  linebreak-style:
+  - 1
+  - unix
