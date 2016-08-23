@@ -11,6 +11,9 @@ globals:
   it: true
   fit: true
   beforeEach: true
+  beforeAll: true
+  afterEach: true
+  afterAll: true
   expect: true
   fail: true
 extends: eslint:recommended
