@@ -58,6 +58,18 @@ app
 // app.route('/:task_id')   // console.log('delete a new task', req.params.task_id);
 app
 .route(/^\/todos\/(\w+)/)
+.get((req, res) => {
+    var target_task_id = req.params[0];
+
+    Todo.find({task_id: target_task_id})
+        .sort( '-updated_at' )
+        .exec( ( err, todos ) => {
+            if (todos.length){
+                return res.status(200).send(todos[0]);
+            }
+            res.status(404).send('NOT FOUND');
+        });
+})
 .put((req, res) => {
     // curl -X PUT -H "Content-Type: application/json"  -d '{"task":"NewTask","status":true}' -w "\n"  http://localhost:3000/t_id
 
