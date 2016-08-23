@@ -5,6 +5,7 @@ const url = require('url');
 // const base_url = 'http://127.0.0.1:' + port;
 const base_url = 'http://demo-todo-mean.herokuapp.com/';
 
+const MAX_TASK_QTY = 30;
 
 describe("todo list RESTful api server", () => {
 
@@ -65,6 +66,10 @@ describe("todo list RESTful api server", () => {
     });
 
     it("creating a new todo then delete it would change task quantity", (done) => {
+      if (task_count >= MAX_TASK_QTY) {
+        fail('currently db reaches tasks limit: ' + MAX_TASK_QTY);
+        done(); // NOTE leave current spec
+      }
       var data = {task: 'blablabla'};
       var option = {
         url: _url,
