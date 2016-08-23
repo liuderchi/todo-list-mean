@@ -3,10 +3,10 @@ require('./util/db-connect'); // db connection
 
 var express = require('express');
 var app = express();
-var path = require('path');
-var bodyParser = require('body-parser');
+const path = require('path');
+const bodyParser = require('body-parser');
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
 
 var util = require('./util/util');
@@ -49,7 +49,7 @@ app
                 task: _task.task,
                 status: false
             }).save(() => {
-                res.status(201).send({});
+                res.status(201).send({task_id: _task.task_id});
             });
         });
 });
