@@ -35,7 +35,7 @@ app
     // curl -X POST -H "Content-Type: application/json"  -d '{"task":"yes","status":true}' -w "\n"  http://localhost:3000/
 
     var _task = JSON.parse(JSON.stringify(req.body));
-    _task.task_id = util.makeid();
+    _task.task_id = util.genRandomString();
 
     Todo.find({})
         .exec((err, todos) => {
