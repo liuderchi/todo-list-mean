@@ -1,19 +1,17 @@
 'use babel'; // use babel transpiler
 require('./util/db-connect'); // db connection
 
-var express = require('express');
-var app = express();
+const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-
 const mongoose = require('mongoose');
 var Todo = mongoose.model('Todo');
-
 var util = require('./util/util');
 
-
-app.use(bodyParser.json()); // REQUEST PARSER
-app.use('/res', express.static('static'));  // NOTE access via /res/js/app.js
+var app = express();
+app.use(bodyParser.json()); // REQUEST PARSER middleware, grab body in req.body
+app.use('/res', express.static('static'));
+// NOTE define url for static files and their folder path
 
 
 // ROUTING
