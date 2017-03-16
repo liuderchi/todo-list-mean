@@ -4,14 +4,16 @@
   "description": "todo app using mean stack",
   "main": "main.js",
   "scripts": {
+    "dev": "webpack",
     "test": "cat test.sh | sh"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^3.0.0",
+    "jasmine": "^2.0",
     "request": "^2.70",
-    "jasmine": "^2.0"
+    "webpack": "^2.2.1"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

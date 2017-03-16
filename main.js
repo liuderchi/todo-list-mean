@@ -11,6 +11,7 @@ var util = require('./util/util');
 var app = express();
 app.use(bodyParser.json()); // REQUEST PARSER middleware, grab body in req.body
 app.use('/res', express.static('static'));
+// TODO apply webpack dist
 // NOTE define url for static files and their folder path
 
 
@@ -19,6 +20,7 @@ app
 .route('/')
 .get((req, res) => {
     res.status(200).sendFile('index.html', { root: path.join('.', 'static') }); // root file
+    // TODO apply webpack dist
 });
 
 
